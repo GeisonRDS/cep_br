@@ -61,8 +61,8 @@ class _HomeState extends State<Home> {
         child: telas[_indiceAtual],
         color: Colors.white,
       ),
-      bottomNavigationBar: BottomNavigationBar(
-
+      bottomNavigationBar: Container(
+        child: BottomNavigationBar(
           backgroundColor: Colors.white,
           currentIndex: _indiceAtual,
           onTap: (indice){
@@ -72,18 +72,42 @@ class _HomeState extends State<Home> {
           },
           type: BottomNavigationBarType.fixed,
           fixedColor: Colors.blue,
+          unselectedItemColor: Colors.black12,
           items: [
             BottomNavigationBarItem(
-              title: Text("Pesquisa por CEP"),
-              icon: Icon(Icons.looks_one)
+                title: Padding(
+                  padding:
+                  EdgeInsets.only(bottom: 10),
+                  child: Text("Pesquisa por CEP"),
+                ),
+                icon: Padding(
+                  padding:
+                  EdgeInsets.only(top: 10),
+                  child: Icon(
+                    Icons.looks_one,
+                    size: 30,
+                  ),
+                ),
             ),
             BottomNavigationBarItem(
-              title: Text("Pesquisa por endereço"),
-              icon: Icon(Icons.font_download),
+              title: Padding(
+                padding:
+                EdgeInsets.only(bottom: 10),
+                child: Text("Pesquisa por endereço"),
+              ),
+              icon: Padding(
+                padding:
+                EdgeInsets.only(top: 10),
+                child: Icon(
+                  Icons.font_download,
+                  size: 26,
+                ),
+              ),
             ),
           ],
-        elevation: 0.0,
-      ),
-    );;
+          elevation: 0.0,
+        ),
+      )
+    );
   }
 }

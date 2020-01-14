@@ -85,17 +85,18 @@ class _TelaResultadoState extends State<TelaResultado> {
         body: Center(
             child:  Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
-                child: Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Center(
-                      child: Text(_mensagemResultado,
-                          style: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.blue
-                          )
-                      ),
-                    )
+                child: Container(
+                  padding: EdgeInsets.only(left: 50, top: 30, right: 50, bottom: 30),
+                  decoration: BoxDecoration(
+                      border: Border(top: BorderSide(color: Colors.blue), bottom: BorderSide(color: Colors.blue))
+                  ),
+                  child: Text(_mensagemResultado,
+                      style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blue
+                      )
+                  ),
                 )
             )
         ),
