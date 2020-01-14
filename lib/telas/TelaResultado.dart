@@ -84,7 +84,7 @@ class _TelaResultadoState extends State<TelaResultado> {
         ),
         body: Center(
             child:  Padding(
-                padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
+                padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
                 child: Padding(
                     padding: EdgeInsets.all(16),
                     child: Center(
@@ -112,7 +112,7 @@ class _TelaResultadoState extends State<TelaResultado> {
           body: Container(
             color: Colors.white,
             child: Padding(
-              padding: EdgeInsets.all(20),
+              padding: EdgeInsets.only(left:20, right: 20),
               child: Center(
                 child: FutureBuilder<List<Cep>>(
                   future: _recuperarEnderecos(),

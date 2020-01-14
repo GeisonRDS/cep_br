@@ -58,11 +58,11 @@ class _HomeState extends State<Home> {
         elevation: 0.0,
       ),
       body: Container(
-        padding: EdgeInsets.all(16),
         child: telas[_indiceAtual],
         color: Colors.white,
       ),
       bottomNavigationBar: BottomNavigationBar(
+
           backgroundColor: Colors.white,
           currentIndex: _indiceAtual,
           onTap: (indice){
