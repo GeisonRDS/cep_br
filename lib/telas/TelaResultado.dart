@@ -42,6 +42,8 @@ class _TelaResultadoState extends State<TelaResultado> {
 
     String url = "https://viacep.com.br/ws/${widget.pesquisaDigitada}/json/";
 
+    print(url);
+
     http.Response response;
     response = await http.get(url);
     Map<String, dynamic> retorno = json.decode(response.body);
@@ -83,12 +85,14 @@ class _TelaResultadoState extends State<TelaResultado> {
           elevation: 0.0,
         ),
         body: Center(
-            child:  Padding(
+            child: Padding(
                 padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
                 child: Container(
-                  padding: EdgeInsets.only(left: 50, top: 30, right: 50, bottom: 30),
+                  padding: EdgeInsets.only(
+                      left: 50, top: 30, right: 50, bottom: 30),
                   decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Colors.blue), bottom: BorderSide(color: Colors.blue))
+                      border: Border(top: BorderSide(color: Colors.blue),
+                          bottom: BorderSide(color: Colors.blue))
                   ),
                   child: Text(_mensagemResultado,
                       style: TextStyle(
@@ -127,8 +131,19 @@ class _TelaResultadoState extends State<TelaResultado> {
                         break;
                       case ConnectionState.active :
                       case ConnectionState.done :
-                        if( snapshot.hasError ){
-                          print("lista: Erro ao carregar");
+                        if( snapshot.hasError || snapshot.data.isEmpty){
+                          return Center(
+                                    child: Padding(
+                                      padding: EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                                      child: Text("Não foram encontrados registros com os dados informados.",
+                                        style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                            color: Colors.blue
+                                        ),
+                                      ),
+                                    )
+                                  );
                         }else {
                           return  ListView.separated(
                             itemCount: snapshot.data.length,
@@ -170,4 +185,3 @@ class _TelaResultadoState extends State<TelaResultado> {
     }
   }
 }
-

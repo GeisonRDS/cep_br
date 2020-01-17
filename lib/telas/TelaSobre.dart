@@ -26,21 +26,21 @@ class _TelaSobreState extends State<TelaSobre> {
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             Container(
                 margin: EdgeInsets.only(top: 30),
                 decoration: BoxDecoration(
                     color: Colors.blue,
-                    borderRadius: BorderRadius.only(topLeft: Radius.circular(75), topRight: Radius.circular(75))
+                    borderRadius: BorderRadius.only(topLeft: Radius.circular(75), bottomRight: Radius.circular(75))
                 ),
                 child: Padding(
                   padding: EdgeInsets.only(left: 20, top: 60, right: 20, bottom: 60),
                   child: Text(
-                    "CEPbr foi desenvolvido com o objetivo de fornecer uma "
-                        "alternativa simples e fácil de busca e consulta de "
-                        "informações de endereços postais com base no CEP ou "
-                        "endereço fornecido.\n"
+                    "CEPbr foi desenvolvido pela Make In Apps com o objetivo "
+                        "de fornecer uma alternativa simples e fácil de busca "
+                        "e consulta de informações de endereços postais com base"
+                        " no CEP ou endereço fornecido.\n"
                         "O CEPbr utiliza a API do ViaCep, um webservice gratuito de "
                         "alto desempenho para consultar Códigos de Endereçamento "
                         "Postal (CEP) do Brasil.\n\n"

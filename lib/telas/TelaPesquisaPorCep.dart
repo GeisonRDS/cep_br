@@ -27,19 +27,26 @@ class _TelaPesquisaPorCepState extends State<TelaPesquisaPorCep> {
     _controllerCep.text = "";
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       backgroundColor: Colors.white,
-      body: Center(
+      body: Form(
+        key: _formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
               padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
-              child: TextField(
+              child: TextFormField(
+                validator: (value){
+                  if(value.isEmpty || value.contains(" ")){
+                    return "Campo obrigatório, utilize somemnte números";
+                  }
+                },
                 keyboardType: TextInputType.number,
                 maxLength: 8,
                 decoration: InputDecoration(
@@ -64,15 +71,19 @@ class _TelaPesquisaPorCepState extends State<TelaPesquisaPorCep> {
                   child: Text(
                     "Consultar",
                     style: TextStyle(
-                      fontSize: 20
+                        fontSize: 20
                     ),
                   ),
-                  onPressed: _recuperarCep
+                  onPressed: (){
+                    if (_formKey.currentState.validate()) {
+                      _recuperarCep();
+                    }
+                  }
               ),
             ),
           ],
         ),
-      ),
+      )
     );
   }
 }
