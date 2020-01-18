@@ -5,27 +5,23 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'dart:async';
 
-class TelaResultado extends StatefulWidget {
+class TelaResultadoLista extends StatefulWidget {
 
   String pesquisaDigitada;
 
-  TelaResultado({this.pesquisaDigitada});
+  TelaResultadoLista({this.pesquisaDigitada});
 
   @override
-  _TelaResultadoState createState() => _TelaResultadoState();
+  _TelaResultadoListaState createState() => _TelaResultadoListaState();
 }
 
-class _TelaResultadoState extends State<TelaResultado> {
+class _TelaResultadoListaState extends State<TelaResultadoLista> {
 
   String _urlBase = "https://viacep.com.br/ws/";
 
-  String _mensagemResultado = "";
-
   Future<List<Cep>> _recuperarEnderecos() async {
 
-    String urlPesquisa = widget.pesquisaDigitada+"/json/";
-
-    String url = _urlBase+urlPesquisa;
+    String url = _urlBase+widget.pesquisaDigitada+"/json/";
 
     http.Response response = await http.get( url );
     var dadosJson = json.decode( response.body );
@@ -38,75 +34,9 @@ class _TelaResultadoState extends State<TelaResultado> {
     return enderecos;
   }
 
-  void _recuperarCep() async {
-
-    String url = "https://viacep.com.br/ws/${widget.pesquisaDigitada}/json/";
-
-    print(url);
-
-    http.Response response;
-    response = await http.get(url);
-    Map<String, dynamic> retorno = json.decode(response.body);
-    String cepDigitado = retorno["cep"]         == "" ? "" : "CEP: ${retorno["cep"]}\n";
-    String logradouro  = retorno["logradouro"]  == "" ? "" : "Logradouro: ${retorno["logradouro"]}\n";
-    String complemento = retorno["complemento"] == "" ? "" : "Complemento: ${retorno["complemento"]}\n";
-    String bairro      = retorno["bairro"]      == "" ? "" : "Bairro: ${retorno["bairro"]}\n";
-    String localidade  = retorno["localidade"]  == "" ? "" : "Cidade: ${retorno["localidade"]}\n";
-    String uf          = retorno["uf"]          == "" ? "" : "UF: ${retorno["uf"]}\n";
-    String unidade     = retorno["unidade"]     == "" ? "" : "Unidade: ${retorno["unidade"]}\n";
-    String ibge        = retorno["ibge"]        == "" ? "" : "IBGE: ${retorno["ibge"]}\n";
-    String gia         = retorno["gia"]         == "" ? "" : "GIA: ${retorno["gia"]}";
-
-    setState(() {
-      _mensagemResultado = "${cepDigitado}"
-          + "${logradouro}"
-          + "${complemento}"
-          + "${bairro}"
-          + "${localidade}"
-          + "${uf}"
-          + "${unidade}"
-          + "${ibge}"
-          + "${gia}";
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
-
-    if(widget.pesquisaDigitada.length == 8){
-      _recuperarCep();
-      return Scaffold(
-        backgroundColor: Colors.white,
-        appBar: AppBar(
-          iconTheme: IconThemeData(
-              color: Colors.blue
-          ),
-          backgroundColor: Colors.white,
-          elevation: 0.0,
-        ),
-        body: Center(
-            child: Padding(
-                padding: EdgeInsets.fromLTRB(20, 0, 20, 60),
-                child: Container(
-                  padding: EdgeInsets.only(
-                      left: 50, top: 30, right: 50, bottom: 30),
-                  decoration: BoxDecoration(
-                      border: Border(top: BorderSide(color: Colors.blue),
-                          bottom: BorderSide(color: Colors.blue))
-                  ),
-                  child: Text(_mensagemResultado,
-                      style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.blue
-                      )
-                  ),
-                )
-            )
-        ),
-      );
-    }else if(widget.pesquisaDigitada.length > 8){
-      return Scaffold(
+    return Scaffold(
           appBar: AppBar(
             iconTheme: IconThemeData(
                 color: Colors.blue
@@ -182,6 +112,5 @@ class _TelaResultadoState extends State<TelaResultado> {
             ),
           )
       );
-    }
   }
 }

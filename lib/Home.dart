@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:cep/telas/TelaPesquisaPorCep.dart';
-import 'package:cep/telas/TelaPesquisaPoEndereco.dart';
+import 'package:cep/telas/TelaPesquisaPorEndereco.dart';
 import 'package:cep/telas/TelaSobre.dart';
 
 class Home extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cep/telas/TelaResultado.dart';
+import 'package:cep/telas/TelaResultadoUnico.dart';
 
 class TelaPesquisaPorCep extends StatefulWidget {
   @override
@@ -17,7 +17,7 @@ class _TelaPesquisaPorCepState extends State<TelaPesquisaPorCep> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => TelaResultado(pesquisaDigitada: enderecoDigitado)
+            builder: (context) => TelaResultadoUnico(pesquisaDigitada: enderecoDigitado)
         )
     );
     _limparCampo();

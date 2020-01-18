@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:cep/telas/TelaResultado.dart';
+import 'package:cep/telas/TelaResultadoLista.dart';
 
 class TelaPesquisaPoEndereco extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _TelaPesquisaPoEnderecoState extends State<TelaPesquisaPoEndereco> {
     Navigator.push(
         context,
         MaterialPageRoute(
-            builder: (context) => TelaResultado(pesquisaDigitada: enderecoDigitado)
+            builder: (context) => TelaResultadoLista(pesquisaDigitada: enderecoDigitado)
         )
     );
     _limparCampos();
@@ -50,15 +50,17 @@ class _TelaPesquisaPoEnderecoState extends State<TelaPesquisaPoEndereco> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: TextFormField(
                   validator: (value){
-                    int f = 1;
-                    for (var i = 0; i < 2; i++) {
-                      if(value.substring(i,f) == " "){
-                        return "Campo obrigatório, mínimo 3 caracteres de A-Z";
-                      }
-                      f++;
-                    }
+                    print("teste 1 "+value);
                     if(value.isEmpty || value.length < 2){
                       return "Campo obrigatório, mínimo 2 caracteres de A-Z";
+                    }else{
+                      int f = 1;
+                      for (var i = 0; i < 2; i++) {
+                        if(value.substring(i,f) == " "){
+                          return "Campo obrigatório, mínimo 3 caracteres de A-Z";
+                        }
+                        f++;
+                      }
                     }
                   },
                   keyboardType: TextInputType.text,
@@ -80,15 +82,16 @@ class _TelaPesquisaPoEnderecoState extends State<TelaPesquisaPoEndereco> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: TextFormField(
                   validator: (value){
-                    int f = 1;
-                    for (var i = 0; i < 3; i++) {
-                      if(value.substring(i,f) == " "){
-                        return "Campo obrigatório, mínimo 3 caracteres de A-Z";
-                      }
-                      f++;
-                    }
                     if(value.isEmpty || value.length < 2 /*|| espacoEmBrando == true*/){
                       return "Campo obrigatório, mínimo 3 caracteres de A-Z";
+                    }else{
+                      int f = 1;
+                      for (var i = 0; i < 3; i++) {
+                        if(value.substring(i,f) == " "){
+                          return "Campo obrigatório, mínimo 3 caracteres de A-Z";
+                        }
+                        f++;
+                      }
                     }
                   },
                   keyboardType: TextInputType.text,
@@ -109,15 +112,16 @@ class _TelaPesquisaPoEnderecoState extends State<TelaPesquisaPoEndereco> {
                 padding: EdgeInsets.fromLTRB(20, 20, 20, 20),
                 child: TextFormField(
                   validator: (value){
-                    int f = 1;
-                    for (var i = 0; i < 3; i++) {
-                      if(value.substring(i,f) == " "){
-                        return "Campo obrigatório, mínimo 3 caracteres de A-Z";
-                      }
-                      f++;
-                    }
                     if(value.isEmpty || value.length < 2){
                       return "Campo obrigatório, mínimo 3 caracteres de A-Z";
+                    }else{
+                      int f = 1;
+                      for (var i = 0; i < 3; i++) {
+                        if(value.substring(i,f) == " "){
+                          return "Campo obrigatório, mínimo 3 caracteres de A-Z";
+                        }
+                        f++;
+                      }
                     }
                   },
                   keyboardType: TextInputType.text,
